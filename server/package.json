@@ -1,0 +1,33 @@
+{
+  "name": "feedback-server",
+  "version": "1.0.0",
+  "description": "Express NodeJs server to manage products feedback ",
+  "main": "src/index.ts",
+  "author": "zepinheiro",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon",
+    "start:dev": "docker-compose -f Docker/dev/docker-compose.yml up"
+  },
+  "devDependencies": {
+    "@types/morgan": "^1.9.3",
+    "nodemon": "^2.0.16",
+    "ts-node": "^10.8.0",
+    "typescript": "^4.7.2"
+  },
+  "dependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^17.0.36",
+    "express": "^4.18.1",
+    "morgan": "^1.10.0"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src"
+    ],
+    "ext": "ts",
+    "exec": "ts-node src/index.ts"
+  }
+}
