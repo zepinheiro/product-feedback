@@ -19,3 +19,13 @@ services:
       - "8000:8000"
     depends_on:
       - mongo
+
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: Docker/Dockerfile.dev
+    volumes:
+      - ./frontend/src:/app/src
+    ports:
+      - "3000:3000"
