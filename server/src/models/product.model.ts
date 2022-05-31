@@ -10,7 +10,7 @@ const productSchema = new Schema({
     minlength: 5,
     maxlength: 255,
   },
-  review: [ReviewModel.schema],
+  reviews: [ReviewModel.schema],
 });
 
 export const ProductModel: Model<IProductModel> = model<IProductModel>(
