@@ -1,5 +1,6 @@
 import express, { Application } from "express";
 import morgan from "morgan";
+import cors from "cors";
 import router from "./routes";
 
 import { connectDB } from "./utils/db-connect";
@@ -13,6 +14,7 @@ connectDB();
 
 app.use(express.json());
 app.use(morgan("tiny"));
+app.use(cors());
 app.use(router);
 
 app.listen(PORT, () => {

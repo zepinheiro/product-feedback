@@ -12,21 +12,24 @@
   },
   "devDependencies": {
     "@types/morgan": "^1.9.3",
+    "@types/express": "^4.17.13",
+    "@types/cors": "^2.8.12",
+    "@types/joi": "^17.2.3",
+    "@types/mongodb": "^4.0.7",
+    "@types/mongoose": "^5.11.97",
+    "@types/node": "^17.0.36",
     "nodemon": "^2.0.16",
     "ts-node": "^10.8.0",
     "typescript": "^4.7.2"
   },
   "dependencies": {
-    "@types/express": "^4.17.13",
-    "@types/joi": "^17.2.3",
-    "@types/mongodb": "^4.0.7",
-    "@types/mongoose": "^5.11.97",
-    "@types/node": "^17.0.36",
+    "cors": "^2.8.5",
     "express": "^4.18.1",
     "joi": "^17.6.0",
     "mongoose": "^6.3.5",
     "morgan": "^1.10.0"
   },
+  "devDepenecies": {},
   "nodemonConfig": {
     "watch": [
       "src"

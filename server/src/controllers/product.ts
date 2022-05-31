@@ -1,4 +1,5 @@
 import { Request, Response, Router } from "express";
+import { Types } from "mongoose";
 import { ProductModel } from "../models/product.model";
 
 import { productValidator } from "../validations/product.validator";
@@ -18,19 +19,6 @@ productRouter.get("/", async (req: Request, res: Response) => {
   });
 
   res.send(productDTOs);
-});
-
-productRouter.get("/:id", async (req: Request, res: Response) => {
-  const product: IProductModel | null = await ProductModel.findById(
-    req.params.id
-  );
-  if (!product) {
-    return res
-      .status(404)
-      .send(`The product with id ${req.params.id} was not found`);
-  }
-
-  res.send(product);
 });
 
 productRouter.post("/", async (req: Request, res: Response) => {
@@ -56,7 +44,45 @@ productRouter.post("/", async (req: Request, res: Response) => {
   }
 });
 
+productRouter.get("/:id", async (req: Request, res: Response) => {
+  if (!Types.ObjectId.isValid(req.params.id)) {
+    return res.status(400).send(`${req.params.id} is not a valid id`);
+  }
+
+  const product: IProductModel | null = await ProductModel.findById(
+    req.params.id
+  );
+  if (!product) {
+    return res
+      .status(404)
+      .send(`The product with id ${req.params.id} was not found`);
+  }
+
+  res.send({ _id: product._id, name: product.name });
+});
+
+productRouter.get("/:id/reviews", async (req: Request, res: Response) => {
+  if (!Types.ObjectId.isValid(req.params.id)) {
+    return res.status(400).send(`${req.params.id} is not a valid id`);
+  }
+
+  const product: IProductModel | null = await ProductModel.findById(
+    req.params.id
+  );
+  if (!product) {
+    return res
+      .status(404)
+      .send(`The product with id ${req.params.id} was not found`);
+  }
+
+  res.send(product.reviews);
+});
+
 productRouter.post("/:id/review", async (req: Request, res: Response) => {
+  if (!Types.ObjectId.isValid(req.params.id)) {
+    return res.status(400).send(`${req.params.id} is not a valid id`);
+  }
+
   const { error } = reviewValidator(req.body);
 
   if (error) {
