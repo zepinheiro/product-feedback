@@ -1,11 +1,9 @@
 import express from "express";
-import { getMessage } from "../controllers/health";
+
+import { errorHandler } from "../middleware/error-handler";
 
 const router = express.Router();
 
-router.get("/health", async (_req, res) => {
-  const response = getMessage();
-  return res.send(response);
-});
+router.use(errorHandler);
 
 export default router;
