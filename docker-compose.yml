@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  mongo:
+    container_name: mongo-db
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+
+  server:
+    container_name: server
+    build:
+      context: ./server
+      dockerfile: Docker/Dockerfile.dev
+    volumes:
+      - ./server/src:/app/src
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongo

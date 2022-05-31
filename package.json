@@ -1,0 +1,12 @@
+{
+  "name": "product-feedback",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:zepinheiro/product-feedback.git",
+  "author": "zepinheiro",
+  "license": "MIT",
+  "scripts": {
+    "build:dev": "docker-compose build",
+    "start:dev": "docker-compose up"
+  }
+}

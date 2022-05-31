@@ -2,10 +2,8 @@ type HealtResponse = {
   message: string;
 };
 
-export default class HealthController {
-  public async getMessage(): Promise<HealtResponse> {
-    return {
-      message: "Running Ok!",
-    };
-  }
-}
+export const getMessage = (): HealtResponse => {
+  return {
+    message: "Running Super Ok!",
+  };
+};

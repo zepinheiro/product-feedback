@@ -8,8 +8,7 @@
   "private": true,
   "scripts": {
     "build": "tsc",
-    "dev": "nodemon",
-    "start:dev": "docker-compose -f Docker/dev/docker-compose.yml up"
+    "dev": "nodemon"
   },
   "devDependencies": {
     "@types/morgan": "^1.9.3",
