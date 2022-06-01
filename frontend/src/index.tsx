@@ -5,6 +5,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { store } from "./app/store";
 
 import reportWebVitals from "./reportWebVitals";
+import "./normalize.css";
+import "./theme.css";
 import "./index.css";
 
 import { ProductsPage } from "./components/ProductsPage/ProductsPage";
@@ -17,10 +19,12 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<ProductsPage />} />
-          <Route path=":productId" element={<ProductPage />} />
-        </Routes>
+        <div className="pageContent">
+          <Routes>
+            <Route path="/" element={<ProductsPage />} />
+            <Route path=":productId" element={<ProductPage />} />
+          </Routes>
+        </div>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>

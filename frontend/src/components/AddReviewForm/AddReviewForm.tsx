@@ -1,7 +1,12 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useAddNewReviewMutation } from "../../app/api";
-import { StarRating } from "../StartRating/StartRating";
+import { InputForm } from "../InputForm/InputForm";
+import { StarRating } from "../StartRating/StarRating";
+import { Button } from "../Button/Button";
+
+import styles from "./AddReviewForm.module.css";
+import { AreaForm } from "../AreaForm/AreaForm";
 
 type AddReviewFormProps = {
   productId: string;
@@ -17,18 +22,13 @@ type IFormInput = {
 export const AddReviewForm: React.FunctionComponent<AddReviewFormProps> = ({
   productId,
 }) => {
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    formState: { errors },
-  } = useForm<IFormInput>();
-
+  const { register, handleSubmit, setValue, reset } = useForm<IFormInput>();
   const [addNewReview, { isLoading }] = useAddNewReviewMutation();
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     if (!isLoading) {
       addNewReview({ productId, ...data });
+      reset();
     }
   };
 
@@ -36,40 +36,19 @@ export const AddReviewForm: React.FunctionComponent<AddReviewFormProps> = ({
 
   return (
     <div>
-      <p>Enter a new review</p>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="name">Name</label>
-        <input
-          id="name"
-          {...register("name", {
-            required: {
-              value: true,
-              message: "The name is required",
-            },
-            maxLength: 25,
-          })}
-        />
-        {errors.name && <span role="alert">{errors.name.message}</span>}
-        <label htmlFor="email">Email</label>
-        <input
-          id="email"
-          {...register("email", {
-            required: "required",
-            pattern: {
-              value: /\S+@\S+\.\S+/,
-              message: "Entered value does not match email format",
-            },
-          })}
-          type="email"
-        />
-        {errors.email && <span role="alert">{errors.email.message}</span>}
-        <StarRating onChange={handleRatingChange} />
-        <label htmlFor="content">Content</label>
-        <textarea
-          id="content"
-          {...register("content", { required: "required" })}
-        />
-        <button type="submit">SUBMIT</button>
+      <p>New Review</p>
+      <form
+        className={styles.addReviewFormContainer}
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <InputForm text="Name" label="name" register={register} required />
+        <InputForm text="Email" label="email" register={register} required />
+        <div className={styles.ratingContainer}>
+          <p className={styles.ratingLabel}>Rating:</p>
+          <StarRating onChange={handleRatingChange} />
+        </div>
+        <AreaForm text="Content" label="content" register={register} required />
+        <Button text="Add Product" />
       </form>
     </div>
   );

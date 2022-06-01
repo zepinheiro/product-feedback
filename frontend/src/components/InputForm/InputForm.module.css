@@ -1,0 +1,11 @@
+.inputForm {
+  width: 100%;
+  border: 1px solid var(--grey);
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: var(--spacing-3);
+}
+
+.inputForm:hover {
+  border-color: var(--primary);
+}

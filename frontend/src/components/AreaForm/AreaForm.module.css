@@ -1,0 +1,13 @@
+.areaForm {
+  width: 100%;
+  border: 1px solid var(--grey);
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: var(--spacing-3);
+  resize: none;
+  height: 150px;
+}
+
+.areaForm:hover {
+  border-color: var(--primary);
+}

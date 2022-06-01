@@ -1,0 +1,19 @@
+.formContainer {
+  background-color: var(--light);
+  padding: var(--spacing-4);
+  border-radius: 6px;
+}
+
+.formTitle {
+  color: var(--dark);
+  margin-top: 0;
+}
+
+.formContent {
+  display: flex;
+}
+
+.inputForm {
+  width: 100%;
+  margin-right: var(--spacing-4);
+}

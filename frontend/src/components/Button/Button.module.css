@@ -1,0 +1,20 @@
+.button {
+  background-color: var(--primary);
+  white-space: nowrap;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0 var(--spacing-2);
+}
+
+.button:hover {
+  background-color: var(--grey);
+}
+
+.button:active {
+  box-shadow: 0px 0px 1px 1px var(--dark);
+}
+
+.text {
+  letter-spacing: 1px;
+}

@@ -4,20 +4,18 @@ import { AddReviewForm } from "../AddReviewForm/AddReviewForm";
 import { ProductReviews } from "../ProductReviews/ProductReviews";
 
 export const ProductPage = () => {
-  //! REVIEW THIS PRODUCT ID THING
-
   let { productId = "" } = useParams();
   const { data, error } = useGetProductQuery(productId);
 
-  if (error) {
-    return <div>Product not found</div>;
+  if (error || !data) {
+    return <h1>Oops! Looks like that product doesn't exist</h1>;
   }
 
   return (
     <div>
-      <h1>Product page: {data?.name}</h1>
+      <h1>{data.name.toUpperCase()}</h1>
       <AddReviewForm productId={productId} />
-      <ProductReviews productId={productId} />
+      {data && <ProductReviews productId={productId} />}
     </div>
   );
 };

@@ -1,0 +1,32 @@
+.productListContainer {
+  background-color: var(--light);
+  padding: var(--spacing-4);
+  border-radius: 6px;
+  margin-top: var(--spacing-4);
+}
+
+.productListTitle {
+  margin-top: 0;
+  color: var(--dark);
+  text-align: center;
+}
+
+.productList {
+  column-count: 2;
+  margin-bottom: var(--negative-spacing-4);
+}
+
+.productItem {
+  background-color: var(--light-primary);
+  margin-bottom: var(--spacing-4);
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+}
+
+.productItem:hover {
+  transform: scale(1.05);
+}
+
+.information {
+  text-align: center;
+}

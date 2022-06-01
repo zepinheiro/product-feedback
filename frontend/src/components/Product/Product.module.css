@@ -1,0 +1,4 @@
+.productContainer {
+  padding: var(--spacing-3);
+  text-align: center;
+}

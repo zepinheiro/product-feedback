@@ -1,0 +1,18 @@
+.addReviewFormContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.addReviewFormContainer button {
+  padding: var(--spacing-2) 0;
+}
+
+.ratingContainer {
+  display: flex;
+  align-items: center;
+}
+
+.ratingLabel {
+  margin: 0;
+}
