@@ -4,7 +4,7 @@ import { Star } from "./Star";
 import styles from "./StarRating.module.css";
 
 type StarRatingProps = {
-  onChange: (rating: number) => void;
+  onChange?: (rating: number) => void;
   value?: number;
   disabled?: boolean;
 };
@@ -18,9 +18,11 @@ export const StarRating: React.FunctionComponent<StarRatingProps> = ({
 
   const changeRating = (newRating: number) => {
     if (disabled) return;
-    const nextRating = newRating === rating ? 0 : newRating;
-    setRating(nextRating);
-    onChange(nextRating);
+    if (onChange) {
+      const nextRating = newRating === rating ? 0 : newRating;
+      setRating(nextRating);
+      onChange(nextRating);
+    }
   };
   return (
     <div className={styles.container}>

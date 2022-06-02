@@ -1,6 +1,9 @@
 import React from "react";
 import { useGetReviewsQuery } from "../../app/api";
 import { ReviewDTO } from "../../types/review";
+import { ProductReview } from "../ProductReview/ProductReview";
+
+import styles from "./ProductReviews.module.css";
 
 type ProductReviewsProps = {
   productId: string;
@@ -9,29 +12,28 @@ type ProductReviewsProps = {
 export const ProductReviews: React.FunctionComponent<ProductReviewsProps> = ({
   productId,
 }) => {
-  // TODO: ADD PAGINATION
   const { data } = useGetReviewsQuery(productId);
 
-  if (!data?.length) {
-    return <div>No reviews found!</div>;
-  }
-
   // TODO: MOVE THIS TO A PURE VISUAL COMPONENT
-  const renderedReviews = data.map((review: ReviewDTO) => {
-    return (
-      <div key={review._id}>
-        <p>Name: {review.name}</p>
-        <p>Email: {review.email}</p>
-        <p>Rating: {review.rating}</p>
-        <p>Content: {review.content}</p>
-      </div>
-    );
-  });
+  const renderedReviews = data?.map(
+    ({ _id, name, email, rating, content }: ReviewDTO) => {
+      return (
+        <ProductReview
+          key={_id}
+          name={name}
+          email={email}
+          rating={rating}
+          content={content}
+        />
+      );
+    }
+  );
 
   return (
     <div>
       <h3>Product reviews</h3>
-      {renderedReviews}
+      {!data?.length && <div>No reviews found!</div>}
+      <div className={styles.reviewsContainer}>{renderedReviews}</div>
     </div>
   );
 };

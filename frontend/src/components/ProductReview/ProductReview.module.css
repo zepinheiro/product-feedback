@@ -1,0 +1,23 @@
+.container {
+  padding: var(--spacing-3);
+  border: 1px solid var(--grey);
+  border-radius: 4px;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.metaContainer {
+  display: flex;
+}
+
+.email {
+  margin: 0 var(--spacing-2) 0 var(--spacing-1);
+  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.content {
+}

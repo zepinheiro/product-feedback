@@ -14,5 +14,5 @@
 }
 
 .ratingLabel {
-  margin: 0;
+  margin: 0 var(--spacing-2) 0 0;
 }

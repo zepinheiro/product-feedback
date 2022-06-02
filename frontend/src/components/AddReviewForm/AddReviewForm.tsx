@@ -36,7 +36,6 @@ export const AddReviewForm: React.FunctionComponent<AddReviewFormProps> = ({
 
   return (
     <div>
-      <p>New Review</p>
       <form
         className={styles.addReviewFormContainer}
         onSubmit={handleSubmit(onSubmit)}
@@ -48,7 +47,7 @@ export const AddReviewForm: React.FunctionComponent<AddReviewFormProps> = ({
           <StarRating onChange={handleRatingChange} />
         </div>
         <AreaForm text="Content" label="content" register={register} required />
-        <Button text="Add Product" />
+        <Button text="Add Review" />
       </form>
     </div>
   );
