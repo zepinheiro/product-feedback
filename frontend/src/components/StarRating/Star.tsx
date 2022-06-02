@@ -10,5 +10,11 @@ export const Star: React.FunctionComponent<StarProps> = ({
   filled,
   onClick,
 }) => {
-  return <FaStar color={filled ? "orange" : "lightgray"} onClick={onClick} />;
+  return (
+    <FaStar
+      data-testid="star-component"
+      color={filled ? "orange" : "lightgray"}
+      onClick={onClick}
+    />
+  );
 };

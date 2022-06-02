@@ -18,6 +18,7 @@ export const AreaForm = ({
   maxLength = 250,
 }: AreaFormProps) => (
   <textarea
+    data-testid="text-area-element"
     className={styles.areaForm}
     placeholder={text}
     maxLength={maxLength}

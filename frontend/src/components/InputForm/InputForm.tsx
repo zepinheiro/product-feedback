@@ -15,9 +15,10 @@ export const InputForm = ({
   label,
   register,
   required,
-  maxLength = 25,
+  maxLength = 50,
 }: InputProps) => (
   <input
+    data-testid="input-form"
     placeholder={text}
     className={styles.inputForm}
     maxLength={maxLength}

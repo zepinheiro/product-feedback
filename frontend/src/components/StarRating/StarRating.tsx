@@ -24,10 +24,12 @@ export const StarRating: React.FunctionComponent<StarRatingProps> = ({
       onChange(nextRating);
     }
   };
+
   return (
-    <div className={styles.container}>
+    <div data-testid="star-rating-container" className={styles.container}>
       {[1, 2, 3, 4, 5].map((value) => (
         <Star
+          data-testid="star-rating-star"
           key={value}
           filled={value <= rating}
           onClick={() => changeRating(value)}

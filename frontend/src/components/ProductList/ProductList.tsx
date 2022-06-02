@@ -9,21 +9,41 @@ export const ProductList = () => {
 
   const mappedProducts = data?.map((product: ProductDTO) => {
     return (
-      <div className={styles.productItem} key={product._id}>
+      <div
+        data-testid="product-list-product"
+        className={styles.productItem}
+        key={product._id}
+      >
         <Product name={product.name} _id={product._id} />
       </div>
     );
   });
 
   return (
-    <div className={styles.productListContainer}>
-      <h1 className={styles.productListTitle}>Product list</h1>
-      {isLoading && <div className={styles.information}>Loading ...</div>}
+    <div
+      data-testid="product-list-container"
+      className={styles.productListContainer}
+    >
+      <h1 data-testid="product-list-title" className={styles.productListTitle}>
+        Product list
+      </h1>
+      {isLoading && (
+        <div data-testid="product-list-loading" className={styles.information}>
+          Loading ...
+        </div>
+      )}
       {!isLoading && !data?.length && (
-        <div className={styles.information}>No products found ...</div>
+        <div
+          data-testid="product-list-not-found"
+          className={styles.information}
+        >
+          No products found ...
+        </div>
       )}
       {!isLoading && data && (
-        <div className={styles.productList}>{mappedProducts}</div>
+        <div data-testid="product-list-products" className={styles.productList}>
+          {mappedProducts}
+        </div>
       )}
     </div>
   );

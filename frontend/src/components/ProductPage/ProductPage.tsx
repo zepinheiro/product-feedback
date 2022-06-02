@@ -11,13 +11,20 @@ export const ProductPage = () => {
   const { data, error } = useGetProductQuery(productId);
 
   if (error || !data) {
-    return <h1>Oops! Looks like that product doesn't exist</h1>;
+    return (
+      <h1 data-testid="product-page-error">
+        Oops! Looks like that product doesn't exist
+      </h1>
+    );
   }
 
   return (
-    <div>
-      <h1>{data.name.toUpperCase()}</h1>
-      <div className={styles.upperSection}>
+    <div data-testid="product-page-container">
+      <h1 data-testid="product-page-title">{data.name.toUpperCase()}</h1>
+      <div
+        data-testid="product-page-upper-section-container"
+        className={styles.upperSection}
+      >
         <AddReviewForm productId={productId} />
         <ReviewChart productId={productId} />
       </div>

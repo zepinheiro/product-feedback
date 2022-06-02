@@ -2,7 +2,7 @@ import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useAddNewReviewMutation } from "../../app/api";
 import { InputForm } from "../InputForm/InputForm";
-import { StarRating } from "../StartRating/StarRating";
+import { StarRating } from "../StarRating/StarRating";
 import { Button } from "../Button/Button";
 
 import styles from "./AddReviewForm.module.css";

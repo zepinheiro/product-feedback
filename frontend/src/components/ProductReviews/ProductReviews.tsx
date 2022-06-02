@@ -14,7 +14,6 @@ export const ProductReviews: React.FunctionComponent<ProductReviewsProps> = ({
 }) => {
   const { data } = useGetReviewsQuery(productId);
 
-  // TODO: MOVE THIS TO A PURE VISUAL COMPONENT
   const renderedReviews = data?.map(
     ({ _id, name, email, rating, content }: ReviewDTO) => {
       return (
@@ -30,10 +29,17 @@ export const ProductReviews: React.FunctionComponent<ProductReviewsProps> = ({
   );
 
   return (
-    <div>
+    <div data-testid="product-reviews-component">
       <h3>Product reviews</h3>
       {!data?.length && <div>No reviews found!</div>}
-      <div className={styles.reviewsContainer}>{renderedReviews}</div>
+      {data && (
+        <div
+          data-testid="product-reviews-container"
+          className={styles.reviewsContainer}
+        >
+          {renderedReviews}
+        </div>
+      )}
     </div>
   );
 };

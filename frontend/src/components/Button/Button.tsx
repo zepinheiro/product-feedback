@@ -7,8 +7,15 @@ type ButtonProps = {
 
 export const Button = ({ text, onClick }: ButtonProps) => {
   return (
-    <button className={styles.button} type="submit" onClick={onClick}>
-      <span className={styles.text}>{text}</span>
+    <button
+      data-testid="button-element"
+      className={styles.button}
+      type="submit"
+      onClick={onClick}
+    >
+      <span data-testid="button-text" className={styles.text}>
+        {text}
+      </span>
     </button>
   );
 };

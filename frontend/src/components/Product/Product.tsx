@@ -16,8 +16,12 @@ export const Product = ({ name, _id }: ProductType) => {
   };
 
   return (
-    <div className={styles.productContainer} onClick={handleCLick}>
-      <p>{name}</p>
+    <div
+      data-testid="product-container"
+      className={styles.productContainer}
+      onClick={handleCLick}
+    >
+      <p data-testid="product-name">{name}</p>
     </div>
   );
 };

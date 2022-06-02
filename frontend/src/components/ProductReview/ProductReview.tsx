@@ -1,4 +1,4 @@
-import { StarRating } from "../StartRating/StarRating";
+import { StarRating } from "../StarRating/StarRating";
 import styles from "./ProductReview.module.css";
 
 type ProductReviewProps = {
@@ -15,13 +15,22 @@ export const ProductReview = ({
   content,
 }: ProductReviewProps) => {
   return (
-    <div className={styles.container}>
-      <p className={styles.name}>{name}</p>
-      <div className={styles.metaContainer}>
-        <p className={styles.email}>{email}</p>
+    <div data-testid="product-review-container" className={styles.container}>
+      <p data-testid="product-review-name" className={styles.name}>
+        {name}
+      </p>
+      <div
+        data-testid="product-review-meta-container"
+        className={styles.metaContainer}
+      >
+        <p data-testid="product-review-meta-email" className={styles.email}>
+          {email}
+        </p>
         <StarRating value={rating} disabled />
       </div>
-      <p className={styles.content}>{content}</p>
+      <p data-testid="product-review-content" className={styles.content}>
+        {content}
+      </p>
     </div>
   );
 };
