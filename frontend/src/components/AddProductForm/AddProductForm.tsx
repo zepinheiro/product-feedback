@@ -23,11 +23,21 @@ export const AddProductForm = () => {
   };
 
   return (
-    <div className={styles.formContainer}>
-      <h1 className={styles.formTitle}>Add a new product</h1>
-      <form className={styles.formContent} onSubmit={handleSubmit(onSubmit)}>
+    <div
+      data-testid="add-product-form-container"
+      className={styles.formContainer}
+    >
+      <h1 data-testid="add-product-form-title" className={styles.formTitle}>
+        Add a new product
+      </h1>
+      <form
+        data-testid="add-product-form-content"
+        className={styles.formContent}
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <div className={styles.inputForm}>
           <InputForm
+            data-testid="add-product-form-input"
             text="Product Name"
             label="name"
             register={register}
