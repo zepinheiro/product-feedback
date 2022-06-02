@@ -35,7 +35,7 @@ export const AddReviewForm: React.FunctionComponent<AddReviewFormProps> = ({
   const handleRatingChange = (rating: number) => setValue("rating", rating);
 
   return (
-    <div>
+    <div className={styles.container}>
       <form
         className={styles.addReviewFormContainer}
         onSubmit={handleSubmit(onSubmit)}
