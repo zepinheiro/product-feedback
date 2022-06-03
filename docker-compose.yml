@@ -31,3 +31,14 @@ services:
       - "3000:3000"
     depends_on:
       - server
+
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - server
+      - frontend
