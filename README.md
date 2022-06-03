@@ -2,6 +2,8 @@
 
 Solution for the product feedback exercise
 
+[![Fronted Unit Test](https://github.com/zepinheiro/product-feedback/actions/workflows/frontend.js.yml/badge.svg?branch=main)](https://github.com/zepinheiro/product-feedback/actions/workflows/frontend.js.yml)
+
 ## Requirements to run
 
 - Docker
