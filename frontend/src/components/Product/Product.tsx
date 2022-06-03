@@ -14,7 +14,7 @@ type ProductType = {
  * @param name - Product name
  * @param _id  - Product id
  */
-export const Product = ({ name, _id }: ProductType) => {
+const ProductExerpt = ({ name, _id }: ProductType) => {
   const navigate = useNavigate();
 
   const handleCLick = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -34,3 +34,5 @@ export const Product = ({ name, _id }: ProductType) => {
     </div>
   );
 };
+
+export const Product = React.memo(ProductExerpt);

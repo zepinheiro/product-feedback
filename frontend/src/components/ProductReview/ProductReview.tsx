@@ -1,3 +1,4 @@
+import React from "react";
 import { StarRating } from "../StarRating/StarRating";
 import styles from "./ProductReview.module.css";
 
@@ -15,7 +16,7 @@ type ProductReviewProps = {
  * @param rating - review rating
  * @param content - review content
  */
-export const ProductReview = ({
+const ProductReviewExerpt = ({
   name,
   email,
   rating,
@@ -41,3 +42,5 @@ export const ProductReview = ({
     </div>
   );
 };
+
+export const ProductReview = React.memo(ProductReviewExerpt);
