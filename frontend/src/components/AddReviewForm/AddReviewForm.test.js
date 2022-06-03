@@ -68,7 +68,7 @@ describe("Add Review Form Component", () => {
   });
 
   describe("when the user submits", () => {
-    it("shoul call the mutation when IsLoading is false", async () => {
+    it("should call the mutation when IsLoading is false", async () => {
       renderAddReviewForm();
 
       const container = screen.getByTestId("add-review-form-content");
@@ -94,6 +94,10 @@ describe("Add Review Form Component", () => {
           },
         });
 
+        const { onChange } = StarRating.mock.calls[0][0];
+
+        onChange(1);
+
         fireEvent.submit(container);
       });
 
@@ -101,11 +105,55 @@ describe("Add Review Form Component", () => {
         content: "content",
         email: "email",
         name: "name",
+        rating: 1,
         productId: "id",
       });
     });
 
-    it("shoul not call the mutation when IsLoading is false", async () => {
+    it("should not call the mutation when IsLoading is false", async () => {
+      useAddNewReviewMutation.mockReturnValue([
+        mockAddNewReview,
+        {
+          isLoading: true,
+        },
+      ]);
+
+      renderAddReviewForm();
+
+      const container = screen.getByTestId("add-review-form-content");
+      const inputs = screen.getAllByTestId("input-form");
+      const areaInput = screen.getByTestId("text-area-element");
+
+      await act(async () => {
+        fireEvent.input(inputs[0], {
+          target: {
+            value: "name",
+          },
+        });
+
+        fireEvent.input(inputs[1], {
+          target: {
+            value: "email",
+          },
+        });
+
+        fireEvent.input(areaInput, {
+          target: {
+            value: "content",
+          },
+        });
+
+        const { onChange } = StarRating.mock.calls[0][0];
+
+        onChange(1);
+
+        fireEvent.submit(container);
+      });
+
+      expect(mockAddNewReview).not.toHaveBeenCalled();
+    });
+
+    it("should not call the mutation when no rating is set", async () => {
       useAddNewReviewMutation.mockReturnValue([
         mockAddNewReview,
         {

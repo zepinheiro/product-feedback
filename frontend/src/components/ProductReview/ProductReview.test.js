@@ -60,7 +60,7 @@ describe("Product Review Component", () => {
 
     expect(StarRating).toHaveBeenCalledWith(
       {
-        value: 5,
+        rating: 5,
         disabled: true,
       },
       {}

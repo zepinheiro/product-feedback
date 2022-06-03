@@ -14,7 +14,7 @@ const mockOnChange = jest.fn();
 
 const DEFAULT_PROPS = {
   onChange: mockOnChange,
-  value: 0,
+  rating: 0,
   disabled: false,
 };
 
@@ -39,53 +39,38 @@ describe("Star Rating Component", () => {
   });
 
   describe("when clicking the first star", () => {
-    it("should change the filled to true", () => {
+    it("should change call onChange", () => {
       renderStarRating(DEFAULT_PROPS);
 
       const firstStar = Star.mock.calls[0][0];
 
-      expect(firstStar.filled).toBe(false);
-
       act(() => {
         firstStar.onClick();
       });
 
-      const firstStarReRender = Star.mock.calls[5][0];
-
-      expect(firstStarReRender.filled).toBe(true);
       expect(mockOnChange).toHaveBeenCalledWith(1);
     });
   });
 
-  describe("when disabled is true", () => {
-    it("should not re render the stars", () => {
-      renderStarRating({ ...DEFAULT_PROPS, disabled: true });
+  describe("when rating value changes", () => {
+    it("should re render the stars", () => {
+      const { rerender } = renderStarRating({
+        ...DEFAULT_PROPS,
+        disabled: true,
+      });
 
       const firstStar = Star.mock.calls[0][0];
 
       expect(firstStar.filled).toBe(false);
 
-      act(() => {
-        firstStar.onClick();
-      });
+      const newProps = {
+        ...DEFAULT_PROPS,
+        rating: 1,
+      };
+      rerender(<StarRating {...newProps} />);
 
-      expect(Star.mock.calls.length).toBe(5);
-    });
-  });
-
-  describe("when onChange is not provided", () => {
-    it("should not re render the stars", () => {
-      renderStarRating({ ...DEFAULT_PROPS, onChange: undefined });
-
-      const firstStar = Star.mock.calls[0][0];
-
-      expect(firstStar.filled).toBe(false);
-
-      act(() => {
-        firstStar.onClick();
-      });
-
-      expect(Star.mock.calls.length).toBe(5);
+      const firstStarReRender = Star.mock.calls[5][0];
+      expect(firstStarReRender.filled).toBe(true);
     });
   });
 });

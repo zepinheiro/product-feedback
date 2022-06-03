@@ -8,6 +8,7 @@ type InputProps = {
   register: UseFormRegister<any>;
   required: boolean;
   maxLength?: number;
+  type?: string;
 };
 
 /**
@@ -25,12 +26,15 @@ export const InputForm = ({
   register,
   required,
   maxLength = 50,
+  type,
 }: InputProps) => (
   <input
     data-testid="input-form"
     placeholder={text}
     className={styles.inputForm}
     maxLength={maxLength}
+    minLength={5}
+    type={type}
     {...register(label, { required })}
   />
 );

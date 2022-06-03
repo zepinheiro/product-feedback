@@ -12,6 +12,7 @@ const DEFAULT_PROPS = {
   register: registerMock,
   required: true,
   maxLength: 50,
+  type: "email",
 };
 
 const renderInputForm = (props) => {
@@ -28,6 +29,8 @@ describe("Input Form Component", () => {
     expect(container).toHaveClass(styles.inputForm);
     expect(container).toHaveAttribute("placeholder", "placeholder");
     expect(container).toHaveAttribute("maxLength", "50");
+    expect(container).toHaveAttribute("minLength", "5");
+    expect(container).toHaveAttribute("type", "email");
   });
 
   it("should call the register function", () => {

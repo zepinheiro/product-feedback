@@ -7,6 +7,7 @@ import { Button } from "../Button/Button";
 
 import styles from "./AddReviewForm.module.css";
 import { AreaForm } from "../AreaForm/AreaForm";
+import { useState } from "react";
 
 type AddReviewFormProps = {
   productId: string;
@@ -32,15 +33,21 @@ export const AddReviewForm: React.FunctionComponent<AddReviewFormProps> = ({
   const { register, handleSubmit, setValue, reset } = useForm<IFormInput>();
   const [addNewReview, { isLoading }] = useAddNewReviewMutation();
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    // Only submit if request handler is stale
-    if (!isLoading) {
-      addNewReview({ productId, ...data });
-      reset();
-    }
-  };
+  const [ratingValue, setRatingValue] = useState(0);
 
-  const handleRatingChange = (rating: number) => setValue("rating", rating);
+  const handleRatingChange = (rating: number) => {
+    setValue("rating", rating);
+    setRatingValue(rating);
+  };
+  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    // Only submit if request handler is stale and a rating is defined
+    if (isLoading) return;
+    if (!data.rating) return;
+
+    addNewReview({ productId, ...data });
+    reset();
+    setRatingValue(0);
+  };
 
   return (
     <div data-testid="add-review-form-container" className={styles.container}>
@@ -50,10 +57,16 @@ export const AddReviewForm: React.FunctionComponent<AddReviewFormProps> = ({
         onSubmit={handleSubmit(onSubmit)}
       >
         <InputForm text="Name" label="name" register={register} required />
-        <InputForm text="Email" label="email" register={register} required />
+        <InputForm
+          text="Email"
+          label="email"
+          register={register}
+          required
+          type="email"
+        />
         <div className={styles.ratingContainer}>
           <p className={styles.ratingLabel}>Rating:</p>
-          <StarRating onChange={handleRatingChange} />
+          <StarRating onChange={handleRatingChange} rating={ratingValue} />
         </div>
         <AreaForm text="Content" label="content" register={register} required />
         <Button text="Add Review" />

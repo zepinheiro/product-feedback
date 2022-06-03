@@ -2,6 +2,8 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+
 import { store } from "./app/store";
 
 import reportWebVitals from "./reportWebVitals";
@@ -9,6 +11,8 @@ import reportWebVitals from "./reportWebVitals";
 import "./normalize.css";
 import "./theme.css";
 import "./index.css";
+
+import "react-toastify/dist/ReactToastify.css";
 
 import { ProductsPage } from "./components/ProductsPage/ProductsPage";
 import { ProductPage } from "./components/ProductPage/ProductPage";
@@ -21,6 +25,7 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         <div className="pageContent">
+          <ToastContainer />
           <Routes>
             <Route path="/" element={<ProductsPage />} />
             <Route path=":productId" element={<ProductPage />} />

@@ -34,7 +34,7 @@ const ProductReviewExerpt = ({
         <p data-testid="product-review-meta-email" className={styles.email}>
           {email}
         </p>
-        <StarRating value={rating} disabled />
+        <StarRating rating={rating} disabled />
       </div>
       <p data-testid="product-review-content" className={styles.content}>
         {content}

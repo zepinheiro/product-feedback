@@ -31,6 +31,7 @@ export const AreaForm = ({
     className={styles.areaForm}
     placeholder={text}
     maxLength={maxLength}
+    minLength={5}
     {...register(label, { required })}
   />
 );

@@ -29,6 +29,7 @@ describe("Area Form Component", () => {
     expect(container).toHaveTextContent("");
     expect(container).toHaveAttribute("placeholder", "placeholder");
     expect(container).toHaveAttribute("maxLength", "255");
+    expect(container).toHaveAttribute("minLength", "5");
   });
 
   it("should call the register function", () => {
