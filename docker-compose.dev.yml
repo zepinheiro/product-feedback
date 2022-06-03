@@ -1,0 +1,44 @@
+version: "3"
+
+services:
+  mongo:
+    container_name: mongo-db
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+
+  server:
+    container_name: server
+    build:
+      context: ./server
+      dockerfile: Docker/Dockerfile.dev
+    volumes:
+      - ./server/src:/app/src
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongo
+
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: Docker/Dockerfile.dev
+    volumes:
+      - ./frontend/src:/app/src
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
+
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - server
+      - frontend
