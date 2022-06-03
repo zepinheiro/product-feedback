@@ -6,6 +6,9 @@ import { ReviewChart } from "../ReviewChart/ReviewChart";
 
 import styles from "./ProductPage.module.css";
 
+/**
+ * Fetches product metadata and renders all the needed components
+ */
 export const ProductPage = () => {
   let { productId = "" } = useParams();
   const { data, error } = useGetProductQuery(productId);

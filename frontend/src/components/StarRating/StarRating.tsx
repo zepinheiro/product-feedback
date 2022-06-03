@@ -9,6 +9,13 @@ type StarRatingProps = {
   disabled?: boolean;
 };
 
+/**
+ * Renders the 5 stars used to rate a product
+ *
+ * @param onChange - callback that is called when a star is clicked
+ * @param value - default selected star
+ * @param disabled - if true, prevents the user from changing the select star
+ */
 export const StarRating: React.FunctionComponent<StarRatingProps> = ({
   onChange,
   value,

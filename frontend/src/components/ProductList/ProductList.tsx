@@ -4,6 +4,9 @@ import { Product } from "../Product/Product";
 
 import styles from "./ProductList.module.css";
 
+/**
+ * Fetches the product list and renders each one
+ */
 export const ProductList = () => {
   const { data, isLoading } = useGetProductsQuery();
 

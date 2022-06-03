@@ -19,6 +19,13 @@ type IFormInput = {
   content: string;
 };
 
+/**
+ * AddReviewForm component
+ *
+ * Component used to POST a new review for a product via the useAddNewReviewMutation mutation
+ *
+ * @param productId productId associated with the review
+ */
 export const AddReviewForm: React.FunctionComponent<AddReviewFormProps> = ({
   productId,
 }) => {
@@ -26,6 +33,7 @@ export const AddReviewForm: React.FunctionComponent<AddReviewFormProps> = ({
   const [addNewReview, { isLoading }] = useAddNewReviewMutation();
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
+    // Only submit if request handler is stale
     if (!isLoading) {
       addNewReview({ productId, ...data });
       reset();

@@ -10,12 +10,18 @@ type Inputs = {
   name: string;
 };
 
+/**
+ * AddProductForm component
+ *
+ * Component used to POST a new product via the useAddNewProductMutation mutation
+ */
 export const AddProductForm = () => {
   const { register, handleSubmit, reset } = useForm<Inputs>();
 
   const [addNewProduct, { isLoading }] = useAddNewProductMutation();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
+    // Only submit if request handler is stale
     if (!isLoading) {
       addNewProduct(data);
       reset();

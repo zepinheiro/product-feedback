@@ -23,7 +23,6 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip);
 const labels = ["0", "1", "2", "3", "4", "5"];
 
 const defaultRatings: { [key: number]: number } = {
-  0: 0,
   1: 0,
   2: 0,
   3: 0,
@@ -31,6 +30,11 @@ const defaultRatings: { [key: number]: number } = {
   5: 0,
 };
 
+/**
+ * Uses Chart.Js to render the product reviews ratings
+ * @param productId - Product ID to fech the reviews
+ * @returns
+ */
 export const ReviewChart = ({ productId }: ReviewChartProps) => {
   const selectRatingsFromData = useMemo(() => {
     // Return a unique selector instance for this page
@@ -51,6 +55,7 @@ export const ReviewChart = ({ productId }: ReviewChartProps) => {
   const { ratings } = useGetReviewsQuery(productId, {
     selectFromResult: (result) => ({
       ...result,
+      // maps the response using reselect to prevent unecessary re renders
       ratings: selectRatingsFromData(result.data),
     }),
   });

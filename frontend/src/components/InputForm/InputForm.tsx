@@ -10,6 +10,15 @@ type InputProps = {
   maxLength?: number;
 };
 
+/**
+ * Input Form Component
+ *
+ * @param text - Placeholder text
+ * @param label - label name used to register the component on react form hooks
+ * @param register - register function from react form hooks
+ * @param required - controls if the field is required
+ * @param maxLength - controls the max length of the text area
+ */
 export const InputForm = ({
   text,
   label,

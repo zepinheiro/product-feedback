@@ -9,6 +9,11 @@ type ProductReviewsProps = {
   productId: string;
 };
 
+/**
+ *  Fetches all the reviews for a given product
+ *
+ * @param productId - product id to fetch the reviews
+ */
 export const ProductReviews: React.FunctionComponent<ProductReviewsProps> = ({
   productId,
 }) => {

@@ -7,6 +7,13 @@ type ProductType = {
   _id: string;
 };
 
+/**
+ *  Product component.
+ *  Renders a card that when clicked navigates to the product page
+ *
+ * @param name - Product name
+ * @param _id  - Product id
+ */
 export const Product = ({ name, _id }: ProductType) => {
   const navigate = useNavigate();
 

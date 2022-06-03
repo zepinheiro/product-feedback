@@ -6,6 +6,12 @@ type StarProps = {
   onClick: () => void;
 };
 
+/**
+ * Renders a Star
+ *
+ * @param filled - changes the color of the star according to the filled state
+ * @param onClick - callback to be executed when the component is clicked
+ */
 export const Star: React.FunctionComponent<StarProps> = ({
   filled,
   onClick,

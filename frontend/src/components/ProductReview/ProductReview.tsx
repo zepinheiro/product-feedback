@@ -8,6 +8,13 @@ type ProductReviewProps = {
   content: string;
 };
 
+/**
+ * Renders a review card with all the needed information
+ * @param name - review name
+ * @param email - review email
+ * @param rating - review rating
+ * @param content - review content
+ */
 export const ProductReview = ({
   name,
   email,
