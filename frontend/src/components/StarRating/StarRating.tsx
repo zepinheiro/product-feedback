@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Star } from "./Star";
 
 import styles from "./StarRating.module.css";
