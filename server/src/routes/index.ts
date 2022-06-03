@@ -1,6 +1,6 @@
 import express from "express";
 
-import productRouter from "../controllers/product";
+import productRouter from "./product";
 import { errorHandler } from "../middleware/error-handler";
 
 const router = express.Router();
