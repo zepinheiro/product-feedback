@@ -26,7 +26,6 @@ const DEFAULT_PROPS = {
 };
 
 const DATA = {
-  0: 1,
   1: 0,
   2: 2,
   3: 0,
@@ -52,7 +51,7 @@ describe("Review Chart Component", () => {
     expect(Bar).toHaveBeenCalledWith(
       {
         data: {
-          labels: ["0", "1", "2", "3", "4", "5"],
+          labels: ["1", "2", "3", "4", "5"],
           datasets: [
             {
               label: "ratings",

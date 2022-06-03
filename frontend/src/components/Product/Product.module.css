@@ -2,3 +2,8 @@
   padding: var(--spacing-3);
   text-align: center;
 }
+
+.productName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

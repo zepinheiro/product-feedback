@@ -16,3 +16,14 @@
   width: 100%;
   margin-right: var(--spacing-4);
 }
+
+@media screen and (max-width: 700px) {
+  .formContent {
+    flex-direction: column;
+  }
+
+  .formContent button {
+    margin-top: var(--spacing-2);
+    padding: var(--spacing-2) 0;
+  }
+}

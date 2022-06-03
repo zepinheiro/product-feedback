@@ -20,7 +20,7 @@ type ReviewChartProps = {
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip);
 
-const labels = ["0", "1", "2", "3", "4", "5"];
+const labels = ["1", "2", "3", "4", "5"];
 
 const defaultRatings: { [key: number]: number } = {
   1: 0,

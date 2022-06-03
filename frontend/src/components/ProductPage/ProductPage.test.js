@@ -37,7 +37,11 @@ describe("Product Page Component", () => {
 
   describe("when there is an error", () => {
     beforeEach(() => {
-      useGetProductQuery.mockReturnValue({ data: null, error: true });
+      useGetProductQuery.mockReturnValue({
+        data: null,
+        error: true,
+        isLoading: false,
+      });
     });
 
     it("should render the error component", () => {
@@ -49,6 +53,27 @@ describe("Product Page Component", () => {
       expect(errorContainer).toHaveTextContent(
         "Oops! Looks like that product doesn't exist"
       );
+
+      expect(useGetProductQuery).toHaveBeenCalledWith("id");
+    });
+  });
+
+  describe("when the request is loading", () => {
+    beforeEach(() => {
+      useGetProductQuery.mockReturnValue({
+        data: null,
+        error: false,
+        isLoading: true,
+      });
+    });
+
+    it("should render the loading component", () => {
+      renderProductPage();
+
+      const loadingContainer = screen.queryByTestId("product-page-loading");
+
+      expect(loadingContainer).toBeInTheDocument();
+      expect(loadingContainer).toHaveTextContent("Loading ...");
 
       expect(useGetProductQuery).toHaveBeenCalledWith("id");
     });

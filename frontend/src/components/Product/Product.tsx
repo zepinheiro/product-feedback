@@ -28,7 +28,9 @@ export const Product = ({ name, _id }: ProductType) => {
       className={styles.productContainer}
       onClick={handleCLick}
     >
-      <p data-testid="product-name">{name}</p>
+      <p data-testid="product-name" className={styles.productName}>
+        {name}
+      </p>
     </div>
   );
 };

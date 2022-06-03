@@ -1,3 +1,14 @@
 .upperSection {
   display: flex;
 }
+
+.productTitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 1000px) {
+  .upperSection {
+    flex-direction: column;
+  }
+}
