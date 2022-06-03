@@ -10,8 +10,11 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  test-frontend:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
 
     strategy:
       matrix:
@@ -19,15 +22,15 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
+      - name: CHECK-OUT GIT REPOSITORY
       - uses: actions/checkout@v3
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
-        working-directory: frontend
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - run: npm ci
-      working-directory: frontend
-      - run: npm test
-      working-directory: frontend
+          cache-dependency-path: frontend/package-lock.json
 
+      - run: npm ci
+      - run: npm test
