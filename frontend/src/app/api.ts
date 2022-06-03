@@ -11,7 +11,7 @@ import { ReviewDTO, ReviewMutation } from "../types/review";
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8000/api" }),
-  tagTypes: ["Products", "Reviews"],
+  tagTypes: ["Products", "Product", "Reviews"],
   endpoints: (builder) => ({
     // Fetches all Products
     getProducts: builder.query<ProductDTO[], void>({
@@ -28,7 +28,7 @@ export const apiSlice = createApi({
     getProduct: builder.query<ProductDTO, string>({
       query: (id: string) => `/products/${id}`,
       providesTags: (result, error, arg) => [
-        { type: "Products" as const, id: arg },
+        { type: "Product" as const, id: arg },
       ],
     }),
     // Fetches all reviews for a given product
