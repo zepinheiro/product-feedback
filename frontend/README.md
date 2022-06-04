@@ -6,6 +6,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `npm run cypress:open`
+
+Opens cypress UI interface where you can run e2e/regression tests and inspect the pages
+
+Make sure you run `npm start` before running the tests to ensure that we reach the `localhost:3000`
+
 ### `npm start`
 
 Runs the app in the development mode.\

@@ -10,7 +10,7 @@ describe("Add Product Test", () => {
       fixture: "products/newProduct.json",
     }).as("postNewProduct");
 
-    cy.visit("http://localhost:3000/");
+    cy.visit("/");
 
     cy.wait("@getProductsEmpty");
 

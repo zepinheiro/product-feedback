@@ -9,7 +9,7 @@ describe("Add Review Test", () => {
       fixture: "reviews/empty.json",
     }).as("getEmptyReviews");
 
-    cy.visit("http://localhost:3000/product_id");
+    cy.visit("/product_id");
 
     cy.wait(["@getProduct", "@getEmptyReviews"]);
 
