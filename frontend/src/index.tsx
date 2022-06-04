@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -14,8 +14,12 @@ import "./index.css";
 
 import "react-toastify/dist/ReactToastify.css";
 
-import { ProductsPage } from "./components/ProductsPage/ProductsPage";
-import { ProductPage } from "./components/ProductPage/ProductPage";
+const ProductPage = React.lazy(
+  () => import("./components/ProductPage/ProductPage")
+);
+const ProductsPage = React.lazy(
+  () => import("./components/ProductsPage/ProductsPage")
+);
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);
@@ -26,10 +30,12 @@ root.render(
       <BrowserRouter>
         <div className="pageContent">
           <ToastContainer />
-          <Routes>
-            <Route path="/" element={<ProductsPage />} />
-            <Route path=":productId" element={<ProductPage />} />
-          </Routes>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Routes>
+              <Route path="/" element={<ProductsPage />} />
+              <Route path=":productId" element={<ProductPage />} />
+            </Routes>
+          </Suspense>
         </div>
       </BrowserRouter>
     </Provider>

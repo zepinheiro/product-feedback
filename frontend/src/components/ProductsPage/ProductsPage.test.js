@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import { AddProductForm } from "../AddProductForm/AddProductForm";
 import { ProductList } from "../ProductList/ProductList";
 
-import { ProductsPage } from "./ProductsPage";
+import ProductsPage from "./ProductsPage";
 
 jest.mock("../ProductList/ProductList", () => ({
   ProductList: jest.fn(() => <mocked-product-List />),

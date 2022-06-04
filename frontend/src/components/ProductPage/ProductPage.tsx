@@ -9,7 +9,7 @@ import styles from "./ProductPage.module.css";
 /**
  * Fetches product metadata and renders all the needed components
  */
-export const ProductPage = () => {
+const ProductPage = () => {
   let { productId = "" } = useParams();
   const { data, error, isLoading } = useGetProductQuery(productId);
 
@@ -39,3 +39,5 @@ export const ProductPage = () => {
     </div>
   );
 };
+
+export default ProductPage;

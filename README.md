@@ -13,9 +13,14 @@ Solution for the product feedback exercise
 ```javascript
   npm run build:dev // Build the docker dev stack
   npm run start:dev // Lifts the tech stack
+  npm run stop:dev // Stops all dev containers
+
+  npm run build // Build production ready images
+  npm run start // Lifts production ready tech stack
+  npm run stop // Stops all production containers
 ```
 
-Navigate to `localhost:3000/` and use the app.
+Navigate to `localhost/` and use the app.
 
 ---
 

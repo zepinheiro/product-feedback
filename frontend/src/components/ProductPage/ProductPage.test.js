@@ -7,9 +7,7 @@ import { AddReviewForm } from "../AddReviewForm/AddReviewForm";
 import { ProductReviews } from "../ProductReviews/ProductReviews";
 import { ReviewChart } from "../ReviewChart/ReviewChart";
 
-import styles from "./ProductPage.module.css";
-
-import { ProductPage } from "./ProductPage";
+import ProductPage from "./ProductPage";
 
 jest.mock("../../app/api");
 jest.mock("react-router-dom");

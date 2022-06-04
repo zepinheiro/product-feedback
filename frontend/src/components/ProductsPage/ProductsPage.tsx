@@ -4,7 +4,7 @@ import { ProductList } from "../ProductList/ProductList";
 /**
  * Renders products page components
  */
-export const ProductsPage = () => {
+const ProductsPage = () => {
   return (
     <>
       <AddProductForm />
@@ -12,3 +12,5 @@ export const ProductsPage = () => {
     </>
   );
 };
+
+export default ProductsPage;
