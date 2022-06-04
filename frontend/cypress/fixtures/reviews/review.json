@@ -1,0 +1,9 @@
+[
+  {
+    "_id": "review_id",
+    "name": "review name",
+    "email": "email@email.com",
+    "rating": 4,
+    "content": "review content"
+  }
+]
