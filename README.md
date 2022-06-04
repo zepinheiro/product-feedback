@@ -3,6 +3,7 @@
 Solution for the product feedback exercise
 
 [![Fronted Unit Test](https://github.com/zepinheiro/product-feedback/actions/workflows/frontend.js.yml/badge.svg?branch=main)](https://github.com/zepinheiro/product-feedback/actions/workflows/frontend.js.yml)
+[![Cypress Tests](https://github.com/zepinheiro/product-feedback/actions/workflows/cypress.js.yml/badge.svg)](https://github.com/zepinheiro/product-feedback/actions/workflows/cypress.js.yml)
 
 ## Requirements to run
 
