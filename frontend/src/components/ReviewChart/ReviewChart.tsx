@@ -1,4 +1,3 @@
-import { createSelector } from "@reduxjs/toolkit";
 import { useMemo } from "react";
 
 import {
@@ -10,8 +9,8 @@ import {
 } from "chart.js";
 
 import { Bar } from "react-chartjs-2";
+import { createSelectRatingsFromData } from "../ProductPage/ProcutPage.selectors";
 import { useGetReviewsQuery } from "../../app/api";
-import { ReviewDTO } from "../../types/review";
 import styles from "./ReviewChart.module.css";
 
 type ReviewChartProps = {
@@ -22,34 +21,13 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip);
 
 const labels = ["1", "2", "3", "4", "5"];
 
-const defaultRatings: { [key: number]: number } = {
-  1: 0,
-  2: 0,
-  3: 0,
-  4: 0,
-  5: 0,
-};
-
 /**
  * Uses Chart.Js to render the product reviews ratings
  * @param productId - Product ID to fech the reviews
- * @returns
  */
 export const ReviewChart = ({ productId }: ReviewChartProps) => {
   const selectRatingsFromData = useMemo(() => {
-    // Return a unique selector instance for this page
-    return createSelector(
-      (res: ReviewDTO[] | undefined) => res,
-      (data) => {
-        return data?.reduce(
-          (prev, current) => {
-            prev[current.rating]++;
-            return prev;
-          },
-          { ...defaultRatings }
-        );
-      }
-    );
+    return createSelectRatingsFromData();
   }, []);
 
   const { ratings } = useGetReviewsQuery(productId, {

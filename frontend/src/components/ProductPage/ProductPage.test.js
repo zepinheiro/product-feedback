@@ -33,6 +33,23 @@ describe("Product Page Component", () => {
     useParams.mockReturnValue({ productId: "id" });
   });
 
+  describe("when useParams doesn't have productId", () => {
+    beforeEach(() => {
+      useParams.mockReturnValue({});
+      useGetProductQuery.mockReturnValue({
+        data: null,
+        error: true,
+        isLoading: false,
+      });
+    });
+
+    it("should useGetProductQuery with a empty string", () => {
+      renderProductPage();
+
+      expect(useGetProductQuery).toHaveBeenCalledWith("");
+    });
+  });
+
   describe("when there is an error", () => {
     beforeEach(() => {
       useGetProductQuery.mockReturnValue({
@@ -83,6 +100,12 @@ describe("Product Page Component", () => {
         data: { name: "product" },
         error: false,
       });
+    });
+
+    it("should call useParams", () => {
+      renderProductPage();
+
+      expect(useParams).toHaveBeenCalled();
     });
 
     it("should render the product page container", () => {

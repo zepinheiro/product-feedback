@@ -4,9 +4,9 @@ import { Star } from "./Star";
 import styles from "./StarRating.module.css";
 
 type StarRatingProps = {
-  onChange?: (rating: number) => void;
   rating: number;
   disabled?: boolean;
+  onChange?: (rating: number) => void;
 };
 
 /**

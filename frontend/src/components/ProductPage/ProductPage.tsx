@@ -10,7 +10,7 @@ import styles from "./ProductPage.module.css";
  * Fetches product metadata and renders all the needed components
  */
 const ProductPage = () => {
-  let { productId = "" } = useParams();
+  const { productId = "" } = useParams();
   const { data, error, isLoading } = useGetProductQuery(productId);
 
   return (

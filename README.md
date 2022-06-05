@@ -8,6 +8,7 @@ Solution for the product feedback exercise
 ## Requirements to run
 
 - Docker
+- NodeJs
 
 ## How to run
 

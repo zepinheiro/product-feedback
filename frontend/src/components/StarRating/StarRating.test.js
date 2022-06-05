@@ -52,6 +52,20 @@ describe("Star Rating Component", () => {
     });
   });
 
+  describe("when clicking on the star with the same rating", () => {
+    it("should call onChange with 0", () => {
+      renderStarRating({ ...DEFAULT_PROPS, rating: 1 });
+
+      const firstStar = Star.mock.calls[0][0];
+
+      act(() => {
+        firstStar.onClick();
+      });
+
+      expect(mockOnChange).toHaveBeenCalledWith(0);
+    });
+  });
+
   describe("when rating value changes", () => {
     it("should re render the stars", () => {
       const { rerender } = renderStarRating({
@@ -71,6 +85,20 @@ describe("Star Rating Component", () => {
 
       const firstStarReRender = Star.mock.calls[5][0];
       expect(firstStarReRender.filled).toBe(true);
+    });
+  });
+
+  describe("when disabled is true", () => {
+    it("should not fire onChange callback", () => {
+      renderStarRating({ ...DEFAULT_PROPS, disabled: true });
+
+      const firstStar = Star.mock.calls[0][0];
+
+      act(() => {
+        firstStar.onClick();
+      });
+
+      expect(mockOnChange).not.toHaveBeenCalled();
     });
   });
 });

@@ -63,7 +63,7 @@ export const apiSlice = createApi({
   }),
 });
 
-// Export the auto-generated hooks for Queries and Mutations
+//Export the auto-generated hooks for Queries and Mutations
 export const {
   useGetProductsQuery,
   useGetProductQuery,

@@ -66,22 +66,49 @@ describe("Add Product Form Component", () => {
     expect(Button).toHaveBeenCalled();
   });
 
-  it("onSumbit", async () => {
-    renderAddProductForm();
+  describe("when submiting", () => {
+    it("should call the mutation and reset", async () => {
+      renderAddProductForm();
 
-    const container = screen.getByTestId("add-product-form-content");
-    const input = screen.getByTestId("input-form");
+      const container = screen.getByTestId("add-product-form-content");
+      const input = screen.getByTestId("input-form");
 
-    await act(async () => {
-      fireEvent.input(input, {
-        target: {
-          value: "name",
-        },
+      await act(async () => {
+        fireEvent.input(input, {
+          target: {
+            value: "name",
+          },
+        });
+
+        fireEvent.submit(container);
       });
 
-      fireEvent.submit(container);
+      expect(mockAddNewProduct).toHaveBeenCalledWith({ name: "name" });
     });
 
-    expect(mockAddNewProduct).toHaveBeenCalledWith({ name: "name" });
+    it("should not call the mutation and reset when the mutations is Loading", async () => {
+      useAddNewProductMutation.mockReturnValue([
+        mockAddNewProduct,
+        {
+          isLoading: true,
+        },
+      ]);
+      renderAddProductForm();
+
+      const container = screen.getByTestId("add-product-form-content");
+      const input = screen.getByTestId("input-form");
+
+      await act(async () => {
+        fireEvent.input(input, {
+          target: {
+            value: "name",
+          },
+        });
+
+        fireEvent.submit(container);
+      });
+
+      expect(mockAddNewProduct).not.toHaveBeenCalled();
+    });
   });
 });

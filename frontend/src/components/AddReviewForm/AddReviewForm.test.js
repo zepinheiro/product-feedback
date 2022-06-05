@@ -157,7 +157,7 @@ describe("Add Review Form Component", () => {
       useAddNewReviewMutation.mockReturnValue([
         mockAddNewReview,
         {
-          isLoading: true,
+          isLoading: false,
         },
       ]);
 

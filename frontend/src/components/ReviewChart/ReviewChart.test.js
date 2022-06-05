@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 
 import { Bar } from "react-chartjs-2";
 import { useGetReviewsQuery } from "../../app/api";
+import { createSelectRatingsFromData } from "../ProductPage/ProcutPage.selectors";
 
 import styles from "./ReviewChart.module.css";
 
@@ -19,6 +20,9 @@ jest.mock("chart.js", () => ({
   LinearScale: jest.fn(() => "linear-scale"),
   BarElement: jest.fn(() => "bar-element"),
   Tooltip: jest.fn(() => "tooltip"),
+}));
+jest.mock("../ProductPage/ProcutPage.selectors", () => ({
+  createSelectRatingsFromData: jest.fn(),
 }));
 
 const DEFAULT_PROPS = {
@@ -63,5 +67,12 @@ describe("Review Chart Component", () => {
       },
       {}
     );
+  });
+
+  it("should call the useGetReviewsQuery", () => {
+    renderReviewChart(DEFAULT_PROPS);
+
+    expect(useGetReviewsQuery).toHaveBeenCalled();
+    expect(createSelectRatingsFromData).toHaveBeenCalledWith();
   });
 });

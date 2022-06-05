@@ -1,7 +1,7 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 
 import { apiSlice } from "./api";
-import { rtkQueryErrorLogger } from "./middlware";
+import { rtkQueryErrorLogger } from "./middleware";
 
 export const store = configureStore({
   reducer: {
