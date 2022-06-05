@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) `TS` template.
 
 ## Available Scripts
 
@@ -8,7 +8,7 @@ In the project directory, you can run:
 
 ### `npm run cypress:open`
 
-Opens cypress UI interface where you can run e2e/regression tests and inspect the pages
+Opens cypress UI interface where you can run e2e/regression tests and inspect the pages/specs.
 
 Make sure you run `npm start` before running the tests to ensure that we reach the `localhost:3000`
 

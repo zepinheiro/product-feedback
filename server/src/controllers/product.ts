@@ -33,7 +33,7 @@ export const postProduct = async (req: Request, res: Response) => {
 
     res.send(product);
   } catch (error: any) {
-    // If MONGO DB DUP error corred exists, return a 409 HTTP response
+    // If MONGO DB DUP error exists, return a 409 HTTP response
     if (error.code === 11000) {
       res.status(409).send({ error: "Product already exists" });
     } else {
@@ -63,7 +63,7 @@ export const getProductById = async (req: Request, res: Response) => {
   res.send(product);
 };
 
-// Fetchs all the reviews from a specific product
+// Fetches all the reviews from a specific product
 export const getReviews = async (req: Request, res: Response) => {
   // Checks if ID param is of a valid type
   if (!Types.ObjectId.isValid(req.params.id)) {
@@ -81,7 +81,7 @@ export const getReviews = async (req: Request, res: Response) => {
       .send(`The product with id ${req.params.id} was not found`);
   }
 
-  res.send(product.reviews);
+  res.send(product.reviews.reverse());
 };
 
 // Creates a new review for a product

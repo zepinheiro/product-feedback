@@ -1,5 +1,6 @@
 import express, { Application } from "express";
 import morgan from "morgan";
+import helmet from "helmet";
 import cors from "cors";
 import router from "./routes";
 
@@ -14,7 +15,9 @@ connectDB();
 
 app.use(express.json());
 app.use(morgan("tiny"));
+app.use(helmet());
 app.use(cors());
+app.disable("x-powered-by");
 
 app.use(router);
 
